@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Match</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Livestock Match</h1>
+
+    <!-- Form for listing a livestock animal -->
+    <form id="listingForm">
+        <h2>List Your Livestock</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" required><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+        <button type="submit">List Animal</button>
+    </form>
+
+    <!-- Search form for finding potential matches -->
+    <form id="searchForm">
+        <h2>Search for Livestock</h2>
+        <label for="searchTerm">Search Term:</label>
+        <input type="text" id="searchTerm" name="searchTerm"><br>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Container for displaying search results -->
+    <div id="searchResults"></div>
+
+    <script>
+        // JavaScript code goes here
+        // Add event listeners for form submissions
+        document.getElementById('listingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form data
+            const formData = new FormData(this);
+            const animalData = {
+                name: formData.get('name'),
+                breed: formData.get('breed'),
+                age: formData.get('age')
+            };
+            // Send data to backend (using Fetch API or Axios)
+            // Example: fetch('/api/listings', { method: 'POST', body: JSON.stringify(animalData) })
+            // Handle response as needed
+        });
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get search term
+            const searchTerm = document.getElementById('searchTerm').value;
+            // Send search term to backend (using Fetch API or Axios)
+            // Example: fetch(`/api/search?term=${searchTerm}`)
+            // Handle response and display search results
+            // Example: document.getElementById('searchResults').innerHTML = responseHtml;
+        });
+    </script>
+</body>
+</html>
